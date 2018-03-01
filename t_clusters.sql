@@ -1,8 +1,8 @@
 CREATE TABLE clusters (
 	cluster_id SERIAL PRIMARY KEY,
-	cluster_hash varchar(25) UNIQUE,
-	host varchar (25) NOT NULL,
-	port integer NOT NULL,
+	connect_host varchar (25) NOT NULL,
+	connect_port integer NOT NULL,
+	connect_database varchar (25) NOT NULL,
 	description text,
 	username varchar (25) NOT NULL,
 	password varchar (25) NOT NULL,
