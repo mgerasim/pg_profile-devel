@@ -6,7 +6,6 @@ CREATE TABLE clusters (
 	description text,
 	username varchar (25) NOT NULL,
 	password varchar (25) NOT NULL,
-    CONSTRAINT cns_cluster_host_port UNIQUE(host, port)
+    CONSTRAINT cns_cluster_host_port UNIQUE(connect_host, connect_port)
 );
-CREATE INDEX idx_cluster_hash ON clusters(cluster_hash);
 COMMENT ON TABLE clusters IS 'Список кластеров баз данных, по которым выполняется снятие снепшотов';
