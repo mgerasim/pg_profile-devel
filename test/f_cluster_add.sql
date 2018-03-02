@@ -1,4 +1,4 @@
-CREATE OR REPLACE FUNCTION test_cluster_add() RETURNS bigint
+п»їCREATE OR REPLACE FUNCTION test_cluster_add() RETURNS bigint
 AS $$
 DECLARE
     count_before    integer;
@@ -27,7 +27,7 @@ BEGIN
 END
 $$ LANGUAGE plpgsql;
 
-COMMENT ON FUNCTION test_cluster_add() IS 'Тестирование функций добавления кластера.';
+COMMENT ON FUNCTION test_cluster_add() IS 'РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ С„СѓРЅРєС†РёР№ РґРѕР±Р°РІР»РµРЅРёСЏ РєР»Р°СЃС‚РµСЂР°.';
 BEGIN;
 SELECT test_cluster_add();
 ROLLBACK;

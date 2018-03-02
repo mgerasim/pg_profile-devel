@@ -1,10 +1,10 @@
--- Добавление кластера баз данных
--- connect_host - Хост кластера базы данных
--- connect_port - Порт для подключения к кластеру базы данных
--- connect_database - Имя базы данных для начального подключения к кластеру
--- username - Пользователь для подключения к кластеру базе данных
--- password - Пароль для пользователя 
--- description - Описание кластера базы данных
+п»ї-- Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР° Р±Р°Р· РґР°РЅРЅС‹С…
+-- connect_host - РҐРѕСЃС‚ РєР»Р°СЃС‚РµСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…
+-- connect_port - РџРѕСЂС‚ РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє РєР»Р°СЃС‚РµСЂСѓ Р±Р°Р·С‹ РґР°РЅРЅС‹С…
+-- connect_database - РРјСЏ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РґР»СЏ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє РєР»Р°СЃС‚РµСЂСѓ
+-- username - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє РєР»Р°СЃС‚РµСЂСѓ Р±Р°Р·Рµ РґР°РЅРЅС‹С…
+-- password - РџР°СЂРѕР»СЊ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
+-- description - РћРїРёСЃР°РЅРёРµ РєР»Р°СЃС‚РµСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…
 CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar, 
 									IN connect_port integer, 
 									IN connect_database varchar, 
@@ -40,15 +40,15 @@ COMMENT ON FUNCTION cluster_add(IN connect_host varchar,
 									IN connect_database varchar, 
 									IN username varchar, 
 									IN password varchar, 
-									IN description text) IS 'Добавление кластера.';
+									IN description text) IS 'Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР°.';
 
--- Добавление кластера баз данных
--- connect_host - Хост кластера базы данных
--- connect_port - по умолчанию 5432
--- connect_database - Имя базы данных для начального подключения к кластеру
--- username - Пользователь для подключения к кластеру базе данных
--- password - Пароль для пользователя 
--- description - Описание кластера базы данных									
+-- Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР° Р±Р°Р· РґР°РЅРЅС‹С…
+-- connect_host - РҐРѕСЃС‚ РєР»Р°СЃС‚РµСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…
+-- connect_port - РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 5432
+-- connect_database - РРјСЏ Р±Р°Р·С‹ РґР°РЅРЅС‹С… РґР»СЏ РЅР°С‡Р°Р»СЊРЅРѕРіРѕ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє РєР»Р°СЃС‚РµСЂСѓ
+-- username - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє РєР»Р°СЃС‚РµСЂСѓ Р±Р°Р·Рµ РґР°РЅРЅС‹С…
+-- password - РџР°СЂРѕР»СЊ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
+-- description - РћРїРёСЃР°РЅРёРµ РєР»Р°СЃС‚РµСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…									
 CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar, 
 									IN connect_database varchar, 
 									IN username varchar, 
@@ -74,15 +74,15 @@ COMMENT ON FUNCTION cluster_add(IN connect_host varchar,
 									IN connect_database varchar, 
 									IN username varchar, 
 									IN password varchar, 
-									IN description text) IS 'Добавление кластера.';
+									IN description text) IS 'Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР°.';
 
--- Добавление кластера баз данных
--- connect_host - Хост кластера базы данных
--- connect_port - По умолчанию 5432
--- connect_database - По умолчанию postgres
--- username - Пользователь для подключения к кластеру базе данных
--- password - Пароль для пользователя 
--- description - Описание кластера базы данных									
+-- Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР° Р±Р°Р· РґР°РЅРЅС‹С…
+-- connect_host - РҐРѕСЃС‚ РєР»Р°СЃС‚РµСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…
+-- connect_port - РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ 5432
+-- connect_database - РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ postgres
+-- username - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РґР»СЏ РїРѕРґРєР»СЋС‡РµРЅРёСЏ Рє РєР»Р°СЃС‚РµСЂСѓ Р±Р°Р·Рµ РґР°РЅРЅС‹С…
+-- password - РџР°СЂРѕР»СЊ РґР»СЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ 
+-- description - РћРїРёСЃР°РЅРёРµ РєР»Р°СЃС‚РµСЂР° Р±Р°Р·С‹ РґР°РЅРЅС‹С…									
 CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar, 
 									IN username varchar, 
 									IN password varchar, 									
@@ -105,15 +105,15 @@ $$ LANGUAGE plpgsql;
 COMMENT ON FUNCTION cluster_add(IN connect_host varchar, 
 									IN username varchar, 
 									IN password varchar, 									
-									IN description text) IS 'Добавление кластера.';
+									IN description text) IS 'Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР°.';
 									
 
--- Добавление кластера баз данных
--- connect_host - По умолчанию - текущий хост localhost
--- connect_port - По умолчанию - порт 5432
--- connect_database - По умолчанию - postgres
--- username - По умолчанию - postgres
--- password - Пароль пустой 
+-- Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР° Р±Р°Р· РґР°РЅРЅС‹С…
+-- connect_host - РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - С‚РµРєСѓС‰РёР№ С…РѕСЃС‚ localhost
+-- connect_port - РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - РїРѕСЂС‚ 5432
+-- connect_database - РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - postgres
+-- username - РџРѕ СѓРјРѕР»С‡Р°РЅРёСЋ - postgres
+-- password - РџР°СЂРѕР»СЊ РїСѓСЃС‚РѕР№ 
 -- description - 'Current cluster'
 CREATE OR REPLACE FUNCTION cluster_add() RETURNS bigint
 AS $$
@@ -131,4 +131,4 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-COMMENT ON FUNCTION cluster_add() IS 'Добавление кластера.';
+COMMENT ON FUNCTION cluster_add() IS 'Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР°.';
