@@ -10,10 +10,9 @@ BEGIN
     SELECT INTO ID cluster_add('test', 5361, 'dbname', 'username', 'password', 'description');
     SELECT INTO ID cluster_add('test1', 'username', 'password', 'description');
     SELECT INTO ID cluster_add('test2', 'dbname', 'username', 'password', 'description');
-    SELECT INTO ID cluster_add();
     SELECT INTO count_after count(*) FROM clusters;
     
-    IF ((count_after - count_before) = 4) THEN
+    IF ((count_after - count_before) = 3) THEN
         raise notice 'Test success';
     ELSE
         raise notice 'Test fail';

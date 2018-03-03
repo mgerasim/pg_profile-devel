@@ -103,27 +103,4 @@ COMMENT ON FUNCTION cluster_add(IN connect_host varchar,
                                 IN username varchar, 
                                 IN password varchar,                                     
                                 IN description text) IS 'Добавление кластера.';
-                                    
--- Добавление кластера баз данных
--- connect_host - По умолчанию - текущий хост localhost
--- connect_port - По умолчанию - порт 5432
--- connect_database - По умолчанию - postgres
--- username - По умолчанию - postgres
--- password - Пароль пустой 
--- description - 'Current cluster'
-CREATE OR REPLACE FUNCTION cluster_add() RETURNS bigint
-SET search_path=@extschema@,public
-AS $$
-DECLARE
-    ID    bigint;
-BEGIN
-    SELECT INTO ID cluster_add('localhost', 
-                               'postgres',
-                               'postgres',
-                               '',
-                               'Current cluster`');
-    RETURN ID;
-END;
-$$ LANGUAGE plpgsql;
-
-COMMENT ON FUNCTION cluster_add() IS 'Добавление кластера.';
+                                
