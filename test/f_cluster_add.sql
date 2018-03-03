@@ -1,4 +1,5 @@
 ﻿CREATE OR REPLACE FUNCTION test_cluster_add() RETURNS bigint
+SET search_path=@extschema@,public
 AS $$
 DECLARE
     count_before    integer;

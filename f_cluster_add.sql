@@ -11,6 +11,7 @@ CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar,
 									IN username varchar, 
 									IN password varchar, 
 									IN description text) RETURNS bigint
+SET search_path=@extschema@,public
 AS $$
 DECLARE
     ID    bigint;
@@ -54,6 +55,7 @@ CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar,
 									IN username varchar, 
 									IN password varchar, 
 									IN description text) RETURNS bigint
+SET search_path=@extschema@,public
 AS $$
 DECLARE
     ID    bigint;
@@ -87,6 +89,7 @@ CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar,
 									IN username varchar, 
 									IN password varchar, 									
 									IN description text) RETURNS bigint
+SET search_path=@extschema@,public
 AS $$
 DECLARE
     ID    bigint;
@@ -116,6 +119,7 @@ COMMENT ON FUNCTION cluster_add(IN connect_host varchar,
 -- password - Пароль пустой 
 -- description - 'Current cluster'
 CREATE OR REPLACE FUNCTION cluster_add() RETURNS bigint
+SET search_path=@extschema@,public
 AS $$
 DECLARE
     ID    bigint;
