@@ -12,7 +12,7 @@ BEGIN
     SELECT INTO count_before count(*) FROM clusters;
     SELECT INTO ID cluster_add('test1', 'username', 'password', 'host1', 5432, 'postgres');
     
-    PERFORM cluster_edit_name(ID, 'test_update');
+    PERFORM cluster_edit(ID, 'test_update', 'username', 'password', 'host1', 5432, 'postgres');
     
     SELECT name INTO cluster_name  FROM clusters WHERE cluster_id = ID;
         
@@ -36,7 +36,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-COMMENT ON FUNCTION test_cluster_edit() IS 'Testing of function cluster_edit_* of updating of a cluster of databases';
+COMMENT ON FUNCTION test_cluster_edit() IS 'Testing of function cluster_edit of updating of a cluster of databases';
 BEGIN;
 SELECT test_cluster_edit();
 ROLLBACK;
