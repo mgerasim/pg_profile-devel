@@ -1,5 +1,5 @@
-﻿CREATE OR REPLACE FUNCTION test_cluster_add() RETURNS bigint
-SET search_path=@extschema@,public
+CREATE OR REPLACE FUNCTION test_cluster_add() RETURNS bigint
+SET search_path=public
 AS $$
 DECLARE
     count_before    integer;
@@ -7,9 +7,9 @@ DECLARE
     ID              bigint;
 BEGIN
     SELECT INTO count_before count(*) FROM clusters;
-    SELECT INTO ID cluster_add('test', 5361, 'dbname', 'username', 'password', 'description');
-    SELECT INTO ID cluster_add('test1', 'username', 'password', 'description');
-    SELECT INTO ID cluster_add('test2', 'dbname', 'username', 'password', 'description');
+    SELECT INTO ID cluster_add('test1', 'username', 'password', 'host1', 5432, 'postgres');
+    SELECT INTO ID cluster_add('test2', 'username', 'password', 'host2', 5432);
+    SELECT INTO ID cluster_add('test3', 'username', 'password', 'host3');
     SELECT INTO count_after count(*) FROM clusters;
     
     IF ((count_after - count_before) = 3) THEN
@@ -19,7 +19,7 @@ BEGIN
     END IF;
             
     RETURN 1;            
-END
+END;
 $$ LANGUAGE plpgsql;
 
 COMMENT ON FUNCTION test_cluster_add() IS 'Тестирование функций добавления кластера.';

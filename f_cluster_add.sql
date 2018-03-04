@@ -1,106 +1,35 @@
-﻿-- Добавление кластера баз данных
--- connect_host - Хост кластера базы данных
--- connect_port - Порт для подключения к кластеру базы данных
--- connect_database - Имя базы данных для начального подключения к кластеру
--- username - Пользователь для подключения к кластеру базе данных
--- password - Пароль для пользователя 
--- description - Описание кластера базы данных
-CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar, 
-                                       IN connect_port integer, 
-                                       IN connect_database varchar, 
-                                       IN username varchar, 
-                                       IN password varchar, 
-                                       IN description text) RETURNS bigint
-SET search_path=@extschema@,public
+CREATE OR REPLACE FUNCTION cluster_add(IN _name varchar, 
+                                       IN _connect_username varchar, 
+                                       IN _connect_password varchar,
+                                       IN _connect_host varchar, 
+                                       IN _connect_port integer DEFAULT 5432, 
+                                       IN _connect_database varchar DEFAULT 'postgres') RETURNS bigint 
+SET search_path=public 
 AS $$
 DECLARE
     ID    bigint;
 BEGIN
-    INSERT INTO clusters(connect_host, 
+    INSERT INTO clusters(name, 
+                         connect_username, 
+                         connect_password,
+                         connect_host, 
                          connect_port, 
-                         connect_database, 
-                         username, 
-                         password, 
-                         description) 
-    VALUES (connect_host, 
-            connect_port,
-            connect_database,
-            username,
-            password,
-            description) 
+                         connect_database) 
+    VALUES (_name, 
+            _connect_username, 
+            _connect_password,
+            _connect_host, 
+            _connect_port, 
+            _connect_database) 
     RETURNING cluster_id INTO ID;            
     RETURN ID;                
 END;
 $$ LANGUAGE plpgsql;
 
-COMMENT ON FUNCTION cluster_add(IN connect_host varchar, 
-                                IN connect_port integer, 
-                                IN connect_database varchar, 
-                                IN username varchar, 
-                                IN password varchar, 
-                                IN description text) IS 'Добавление кластера.';
+COMMENT ON FUNCTION cluster_add(IN _name varchar, 
+                                IN _connect_username varchar, 
+                                IN _connect_password varchar,
+                                IN _connect_host varchar, 
+                                IN _connect_port integer, 
+                                IN _connect_database varchar) IS 'Р”РѕР±Р°РІР»РµРЅРёРµ РєР»Р°СЃС‚РµСЂР°.';
 
--- Добавление кластера баз данных
--- connect_host - Хост кластера базы данных
--- connect_port - по умолчанию 5432
--- connect_database - Имя базы данных для начального подключения к кластеру
--- username - Пользователь для подключения к кластеру базе данных
--- password - Пароль для пользователя 
--- description - Описание кластера базы данных                                    
-CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar, 
-                                       IN connect_database varchar, 
-                                       IN username varchar, 
-                                       IN password varchar, 
-                                       IN description text) RETURNS bigint
-SET search_path=@extschema@,public
-AS $$
-DECLARE
-    ID    bigint;
-BEGIN
-    SELECT INTO ID cluster_add(connect_host, 
-                               5432,
-                               connect_database,
-                               username,
-                               password,
-                               description);
-    RETURN ID;                
-END;
-$$ LANGUAGE plpgsql;
-
-COMMENT ON FUNCTION cluster_add(IN connect_host varchar, 
-                                IN connect_database varchar, 
-                                IN username varchar, 
-                                IN password varchar, 
-                                IN description text) IS 'Добавление кластера.';
-
--- Добавление кластера баз данных
--- connect_host - Хост кластера базы данных
--- connect_port - По умолчанию 5432
--- connect_database - По умолчанию postgres
--- username - Пользователь для подключения к кластеру базе данных
--- password - Пароль для пользователя 
--- description - Описание кластера базы данных                                    
-CREATE OR REPLACE FUNCTION cluster_add(IN connect_host varchar, 
-                                       IN username varchar, 
-                                       IN password varchar,                                     
-                                       IN description text) RETURNS bigint
-SET search_path=@extschema@,public
-AS $$
-DECLARE
-    ID    bigint;
-BEGIN
-    SELECT INTO ID cluster_add(connect_host, 
-                               'postgres',
-                               username,
-                               password,
-                               description);
-    RETURN ID;
-                
-END;
-$$ LANGUAGE plpgsql;
-
-COMMENT ON FUNCTION cluster_add(IN connect_host varchar, 
-                                IN username varchar, 
-                                IN password varchar,                                     
-                                IN description text) IS 'Добавление кластера.';
-                                
