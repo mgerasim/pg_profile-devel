@@ -22,7 +22,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-COMMENT ON FUNCTION test_cluster_add() IS 'Тестирование функций добавления кластера.';
+COMMENT ON FUNCTION test_cluster_add() IS 'Testing of function cluster_add of adding of a cluster of databases';
 BEGIN;
 SELECT test_cluster_add();
 ROLLBACK;

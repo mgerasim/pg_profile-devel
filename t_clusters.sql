@@ -8,4 +8,4 @@ CREATE TABLE clusters (
     connect_database varchar (25) NOT NULL,
     CONSTRAINT cns_cluster_host_port UNIQUE(connect_host, connect_port)
 );
-COMMENT ON TABLE clusters IS 'Список кластеров баз данных, по которым выполняется снятие снепшотов';
+COMMENT ON TABLE clusters IS 'The list of clusters of databases on which removal of snapshot is executed';
