@@ -12,7 +12,7 @@ BEGIN
     SELECT INTO count_before count(*) FROM clusters;
     SELECT INTO ID cluster_add('test1', 'username', 'password', 'host1', 5432, 'postgres');
     
-    PERFORM cluster_disable(ID);
+    PERFORM cluster_disable('test1');
     
     raise notice 'Test success';
     RETURN 1;            
