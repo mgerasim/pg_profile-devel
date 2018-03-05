@@ -21,3 +21,16 @@ END;
 $$ LANGUAGE plpgsql;
 
 COMMENT ON FUNCTION cluster_disable(IN _ID bigint) IS 'Disable create snapshot of a cluster of databases';
+
+-- Function CLUSTER_DISABLE - disable create snapshot of a all clusters of databases
+CREATE OR REPLACE FUNCTION cluster_disable() RETURNS void
+SET search_path=public
+AS $$
+DECLARE
+BEGIN
+    UPDATE clusters 
+        SET is_enabled = false;
+END;
+$$ LANGUAGE plpgsql;
+
+COMMENT ON FUNCTION cluster_disable() IS 'Disable create snapshot of a all clusters of databases';

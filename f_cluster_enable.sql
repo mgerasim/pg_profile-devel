@@ -21,3 +21,16 @@ END;
 $$ LANGUAGE plpgsql;
 
 COMMENT ON FUNCTION cluster_enable(IN _ID bigint) IS 'Enable create snapshot of a cluster of databases';
+
+-- Function CLUSTER_ENABLE - enable create snapshot of a all clusters of databases
+CREATE OR REPLACE FUNCTION cluster_enable() RETURNS void
+SET search_path=public
+AS $$
+DECLARE
+BEGIN
+    UPDATE clusters 
+        SET is_enabled = true;
+END;
+$$ LANGUAGE plpgsql;
+
+COMMENT ON FUNCTION cluster_enable(IN _ID bigint) IS 'Enable create snapshot of a all clusters of databases';

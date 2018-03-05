@@ -13,6 +13,7 @@ BEGIN
     SELECT INTO ID cluster_add('test1', 'username', 'password', 'host1', 5432, 'postgres');
     
     PERFORM cluster_enable('test1');
+    PERFORM cluster_enable();
     
     raise notice 'Test success';
     RETURN 1;            
