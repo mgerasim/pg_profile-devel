@@ -6,21 +6,24 @@ DECLARE
     count_after     integer;
     ID              bigint;
     temp_ID         bigint;
-    cluster_name    varchar;
+    cluster_username    varchar;
 BEGIN
     
     SELECT INTO count_before count(*) FROM clusters;
     SELECT INTO ID cluster_add('test1', 'username', 'password', 'host1', 5432, 'postgres');
     
-    PERFORM cluster_edit(ID, 'test_update', 'username', 'password', 'host1', 5432, 'postgres');
+    PERFORM cluster_edit('test1', 'username1', 'password', 'host1', 5432, 'postgres');
     
-    SELECT name INTO cluster_name  FROM clusters WHERE cluster_id = ID;
+    SELECT connect_username INTO cluster_username  FROM clusters WHERE cluster_id = ID;
         
-    IF (cluster_name = 'test_update') THEN 
+    IF (cluster_username = 'username1') THEN 
         raise notice 'Test success';
     ELSE
         raise notice 'Test fail';
     END IF;
+    
+    
+    PERFORM cluster_edit('test2', 'username1', 'password', 'host1', 5432, 'postgres');
     
     RETURN 1;
     
