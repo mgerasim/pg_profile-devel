@@ -10,6 +10,9 @@ BEGIN
     SELECT INTO ID cluster_add('test1', 'username', 'password', 'host1', 5432, 'postgres');
     SELECT INTO ID cluster_add('test2', 'username', 'password', 'host2', 5432);
     SELECT INTO ID cluster_add('test3', 'username', 'password', 'host3');
+    
+    SELECT INTO ID cluster_add('Test3', 'username', 'password', 'host3');
+    
     SELECT INTO count_after count(*) FROM clusters;
     
     IF ((count_after - count_before) = 3) THEN
