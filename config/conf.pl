@@ -43,7 +43,7 @@ sub Version {
     }
 
     my $dir_versions = dirname(__FILE__).qq(/)."versions";
-    my $file_build_versions = $dir_versions.qq(/)."build.lst";
+    my $file_build_versions = dirname(__FILE__).qq(/)."build.lst";
     if (! -e $dir_versions) {
         mkdir($dir_versions) or die "Can't create $dir_versions: $!\n";
         print "Directory $dir_versions is created\n";
