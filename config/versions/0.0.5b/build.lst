@@ -1,0 +1,7 @@
+ t_clusters.sql
+ f_cluster_add.sql
+ f_cluster_remove.sql
+ f_cluster_edit.sql
+ f_cluster_start.sql
+ f_cluster_stop.sql
+ 
