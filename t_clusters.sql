@@ -6,8 +6,8 @@ CREATE TABLE clusters (
     connect_host varchar (25) NOT NULL,
     connect_port integer NOT NULL DEFAULT 5432,
     connect_database varchar (25) NOT NULL DEFAULT 'postgres',
-    is_started boolean NOT NULL DEFAULT true,
-    CONSTRAINT cns_cluster_host_port UNIQUE (connect_host, connect_port)
+    is_enabled boolean NOT NULL DEFAULT true,
+    CONSTRAINT cns_cluster_host_port UNIQUE(connect_host, connect_port)
 );
 
 CREATE UNIQUE INDEX inx_cluster_name on clusters (lower(name));
