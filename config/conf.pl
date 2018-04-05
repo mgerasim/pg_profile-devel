@@ -10,7 +10,8 @@ sub Help {
     print "./can.pl COMMAND OPTION1 OPTION2 ... OPTIONn\n";
     print "COMMAND:\n";
     print "help - print help information\n";
-    print "version name - create folder name in versions dir - new version for pg_profile extension"
+    print "version name - create folder name in versions dir - new version for pg_profile extension\n";
+	print "build - create exctension folder\n";
 }
 
 my $command = $ARGV[0];
@@ -28,6 +29,11 @@ if ($command eq "help") {
 if ($command eq "version") {
     Version();
     exit;
+}
+
+if ($command eq "build") {
+	Build();
+	exit;
 }
 
 print "Unknown command\n";
@@ -68,4 +74,32 @@ sub Version {
     say $fbv $version;
     close $fbv;
     print "Added string $version to build.lst: $file_build_versions\n";
+}
+
+sub Build {
+	print "Building ...\n";
+    my $file_build_versions = dirname(__FILE__).qq(/)."build.lst";
+	my $dir_out_build = dirname(__FILE__).qq(/)."out";
+	
+    if (! -e $dir_out_build) {
+        mkdir($dir_out_build) or die "Can't create $dir_out_build: $!\n";
+	}	
+	my $file_out_build = $dir_out_build.qq(/)."out.sql";
+	open my $fob, '>', $file_out_build or die "Could not open '$file_out_build' $!";
+	open (my $fh, "<", $file_build_versions) or die "Could not open file '$file_build_versions' $!";
+	while (my $row = <$fh>) {
+		chomp $row;
+		next if $row eq '';
+		open (my $fhsql, "<", $row) or die "Could not open file '$row' $!";
+		while (my $str = <$fhsql>) {
+			$str = $str =~ s/qq(SET search_path=\@extschema\@,public)//r;
+			print $fob $str;
+		}
+		
+		close $fhsql;
+	}
+	close $fh;
+	close $fob;
+	
+	print "Out file: $file_out_build\n";
 }
